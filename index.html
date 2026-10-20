@@ -1,5 +1,7 @@
+
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -12,16 +14,24 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Montserrat:wght@300;400;500;600&display=swap"
+    <link
+        href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Montserrat:wght@300;400;500;600&display=swap"
         rel="stylesheet">
 
     <link rel="stylesheet" href="style.css">
+
+    <!-- Biblioteca do Supabase -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+    <!-- JavaScript do site -->
     <script src="script.js" defer></script>
 </head>
 
 <body>
 
+    <!-- CAPA -->
     <header class="capa" id="inicio">
+
         <nav class="menu">
             <a href="#inicio">Início</a>
             <a href="#detalhes">O casamento</a>
@@ -30,6 +40,7 @@
         </nav>
 
         <div class="capa-conteudo">
+
             <p class="subtitulo">UM DIA PARA CELEBRAR O AMOR</p>
 
             <h1>Katyane <span>&</span> Adeildo</h1>
@@ -42,13 +53,21 @@
                 NOSSO GRANDE DIA
             </p>
 
-            <a href="#detalhes" class="botao">Conheça os detalhes</a>
+            <a href="#detalhes" class="botao">
+                Conheça os detalhes
+            </a>
+
         </div>
     </header>
 
+
     <main>
+
+        <!-- INTRODUÇÃO -->
         <section class="secao introducao">
+
             <p class="destaque">Com amor e alegria</p>
+
             <h2>Vamos celebrar juntos!</h2>
 
             <p>
@@ -56,13 +75,19 @@
                 compartilhar este momento tão especial com você.
                 Sua presença fará parte da nossa história.
             </p>
+
         </section>
 
+
+        <!-- CONTAGEM REGRESSIVA -->
         <section class="secao contagem">
+
             <p class="destaque">A contagem regressiva começou</p>
+
             <h2>Falta pouco para o nosso sim!</h2>
 
             <div class="relogio">
+
                 <div>
                     <span id="dias">00</span>
                     <small>Dias</small>
@@ -82,38 +107,74 @@
                     <span id="segundos">00</span>
                     <small>Segundos</small>
                 </div>
+
             </div>
 
             <p id="mensagem-contagem" aria-live="polite"></p>
+
         </section>
 
+
+        <!-- DETALHES DO CASAMENTO -->
         <section class="secao" id="detalhes">
+
             <p class="destaque">Anote na agenda</p>
+
             <h2>Detalhes do casamento</h2>
 
             <div class="detalhes-grid">
-                <article class="detalhe-card">
-                    <span class="icone">♡</span>
-                    <h3>A cerimônia</h3>
-                    <p id="data-detalhes">Data a definir</p>
-                    <p id="horario-detalhes">Horário a definir</p>
-                </article>
 
                 <article class="detalhe-card">
+
+                    <span class="icone">♡</span>
+
+                    <h3>A cerimônia</h3>
+
+                    <p id="data-detalhes">Data a definir</p>
+
+                    <p id="horario-detalhes">
+                        Horário a definir
+                    </p>
+
+                </article>
+
+
+                <article class="detalhe-card">
+
                     <span class="icone">⌖</span>
+
                     <h3>O local</h3>
-                    <p id="local-detalhes">Local a definir</p>
-                    <p id="endereco-detalhes">Endereço a definir</p>
-                    <a id="link-mapa" href="#detalhes"
-                        target="_blank" rel="noopener">
+
+                    <p id="local-detalhes">
+                        Local a definir
+                    </p>
+
+                    <p id="endereco-detalhes">
+                        Endereço a definir
+                    </p>
+
+                    <a
+                        id="link-mapa"
+                        href="#detalhes"
+                        target="_blank"
+                        rel="noopener noreferrer">
                         Ver localização
                     </a>
+
                 </article>
+
             </div>
+
         </section>
 
+
+        <!-- CONFIRMAÇÃO DE PRESENÇA -->
         <section class="secao presenca" id="presenca">
-            <p class="destaque">Você é nosso convidado especial</p>
+
+            <p class="destaque">
+                Você é nosso convidado especial
+            </p>
+
             <h2>Confirme sua presença</h2>
 
             <p>
@@ -122,35 +183,79 @@
             </p>
 
             <form id="form-presenca">
-                <label for="nome">Nome completo</label>
-                <input type="text" id="nome" name="nome"
-                    placeholder="Digite seu nome" required>
 
-                <label for="quantidade">Quantidade de pessoas</label>
-                <select id="quantidade" name="quantidade" required>
+                <label for="nome">Nome completo</label>
+
+                <input
+                    type="text"
+                    id="nome"
+                    name="nome"
+                    placeholder="Digite seu nome"
+                    minlength="2"
+                    maxlength="100"
+                    autocomplete="name"
+                    required
+                >
+
+
+                <label for="quantidade">
+                    Quantidade de pessoas
+                </label>
+
+                <select
+                    id="quantidade"
+                    name="quantidade"
+                    required>
+
                     <option value="1">1 pessoa</option>
                     <option value="2">2 pessoas</option>
                     <option value="3">3 pessoas</option>
                     <option value="4">4 pessoas</option>
                     <option value="5">5 pessoas</option>
+
                 </select>
 
-                <label for="resposta">Você poderá comparecer?</label>
-                <select id="resposta" name="resposta" required>
-                    <option value="Sim">Sim, estarei presente!</option>
-                    <option value="Não">Infelizmente, não poderei ir.</option>
+
+                <label for="resposta">
+                    Você poderá comparecer?
+                </label>
+
+                <select
+                    id="resposta"
+                    name="resposta"
+                    required>
+
+                    <option value="Sim">
+                        Sim, estarei presente!
+                    </option>
+
+                    <option value="Não">
+                        Infelizmente, não poderei ir.
+                    </option>
+
                 </select>
+
 
                 <button type="submit" class="botao">
                     Confirmar presença
                 </button>
 
-                <p id="retorno-form" aria-live="polite"></p>
+                <!-- Mensagem de sucesso ou erro -->
+                <p
+                    id="retorno-formulario"
+                    aria-live="polite">
+                </p>
+
             </form>
+
         </section>
 
+
+        <!-- LISTA DE PRESENTES -->
         <section class="secao" id="presentes">
+
             <p class="destaque">Com carinho</p>
+
             <h2>Lista de presentes</h2>
 
             <p>
@@ -159,18 +264,36 @@
                 aqui as opções da nossa lista.
             </p>
 
-            <a id="link-presentes" class="botao secundario"
-                href="#presentes" hidden>
+            <a
+                id="link-presentes"
+                class="botao secundario"
+                href="#presentes"
+                target="_blank"
+                rel="noopener noreferrer"
+                hidden>
                 Ver lista de presentes
             </a>
+
         </section>
+
     </main>
 
+
+    <!-- RODAPÉ -->
     <footer>
+
         <p>Feito com amor para celebrar</p>
-        <p class="assinatura">Katyane & Adeildo</p>
-        <a href="#inicio">Voltar ao início ↑</a>
+
+        <p class="assinatura">
+            Katyane & Adeildo
+        </p>
+
+        <a href="#inicio">
+            Voltar ao início ↑
+        </a>
+
     </footer>
 
 </body>
+
 </html>

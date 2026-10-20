@@ -1,88 +1,314 @@
 
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Casamento Katyane & Adeildo</title>
-    <meta name="description" content="Celebre conosco o casamento de Katyane e Adeildo!">
+    <title>Katyane & Adeildo | Nosso Casamento</title>
+
+    <meta name="description"
+        content="Celebre conosco o casamento de Katyane e Adeildo.">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Montserrat:wght@300;400;500;600&display=swap"
+        rel="stylesheet">
 
     <link rel="stylesheet" href="style.css">
+
+    <!-- Biblioteca do Supabase -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+    <!-- JavaScript do site -->
     <script src="script.js" defer></script>
 </head>
 
 <body>
-    <header class="cabecalho">
-        <p class="subtitulo">Com alegria, convidamos você para celebrar</p>
-        <h1>Katyane <span>&</span> Adeildo</h1>
-        <p class="frase">Um dia especial, uma nova história de amor.</p>
+
+    <!-- CAPA -->
+    <header class="capa" id="inicio">
+
+        <nav class="menu">
+            <a href="#inicio">Início</a>
+            <a href="#detalhes">O casamento</a>
+            <a href="#recepcao">Recepção</a>
+            <a href="#presenca">Presença</a>
+            <a href="#presentes">Presentes</a>
+        </nav>
+
+        <div class="capa-conteudo">
+
+            <p class="subtitulo">UM DIA PARA CELEBRAR O AMOR</p>
+
+            <h1>Katyane <span>&</span> Adeildo</h1>
+
+            <p class="frase">
+                Dois corações, uma história e um amor para toda a vida.
+            </p>
+
+            <p class="data-capa" id="data-capa">
+                NOSSO GRANDE DIA
+            </p>
+
+            <a href="#detalhes" class="botao">
+                Conheça os detalhes
+            </a>
+
+        </div>
     </header>
 
+
     <main>
-        <section class="secao data-casamento">
-            <p class="etiqueta">NOSSO GRANDE DIA</p>
-            <h2>05 de dezembro de 2026</h2>
-            <p class="horario">Às 18 horas</p>
-            <div id="contagem-regressiva" aria-live="polite">
-                Preparando a contagem...
+
+        <!-- INTRODUÇÃO -->
+        <section class="secao introducao">
+
+            <p class="destaque">Com amor e alegria</p>
+
+            <h2>Vamos celebrar juntos!</h2>
+
+            <p>
+                O amor nos trouxe até aqui, e será uma alegria
+                compartilhar este momento tão especial com você.
+                Sua presença fará parte da nossa história.
+            </p>
+
+        </section>
+
+
+        <!-- CONTAGEM REGRESSIVA -->
+        <section class="secao contagem">
+
+            <p class="destaque">A contagem regressiva começou</p>
+
+            <h2>Falta pouco para o nosso sim!</h2>
+
+            <div class="relogio">
+
+                <div>
+                    <span id="dias">00</span>
+                    <small>Dias</small>
+                </div>
+
+                <div>
+                    <span id="horas">00</span>
+                    <small>Horas</small>
+                </div>
+
+                <div>
+                    <span id="minutos">00</span>
+                    <small>Minutos</small>
+                </div>
+
+                <div>
+                    <span id="segundos">00</span>
+                    <small>Segundos</small>
+                </div>
+
+            </div>
+
+            <p id="mensagem-contagem" aria-live="polite"></p>
+
+        </section>
+
+
+        <!-- DETALHES DO CASAMENTO -->
+        <section class="secao" id="detalhes">
+
+            <p class="destaque">Anote na agenda</p>
+
+            <h2>Detalhes do casamento</h2>
+
+            <div class="detalhes-grid">
+
+                <article class="detalhe-card">
+
+                    <span class="icone">♡</span>
+
+                    <h3>A cerimônia</h3>
+
+                    <p id="data-detalhes">Data a definir</p>
+
+                    <p id="horario-detalhes">
+                        Horário a definir
+                    </p>
+
+                </article>
+
+
+                <article class="detalhe-card">
+
+                    <span class="icone">⌖</span>
+
+                    <h3>O local</h3>
+
+                    <p id="local-detalhes">
+                        Local a definir
+                    </p>
+
+                    <p id="endereco-detalhes">
+                        Endereço a definir
+                    </p>
+
+                    <a
+                        id="link-mapa"
+                        href="#detalhes"
+                        target="_blank"
+                        rel="noopener noreferrer">
+                        Ver localização
+                    </a>
+
+                </article>
+
+            </div>
+
+        </section>
+
+
+        <!-- RECEPÇÃO -->
+        <section class="secao" id="recepcao">
+            <p class="destaque">Depois da cerimônia</p>
+            <h2>Recepção</h2>
+            <div class="detalhes-grid" style="grid-template-columns: minmax(0, 1fr); max-width: 650px; margin-left: auto; margin-right: auto;">
+                <article class="detalhe-card">
+                    <span class="icone">♡</span>
+                    <h3>Chácara Teixeira Festas &amp; Eventos</h3>
+                    <p>R. Henrique Ribeiro da Silva, s/n - Paratibe, João Pessoa - PB, 58062-473, Brasil</p>
+                    <a href="https://www.google.com/maps/search/?api=1&amp;query=Ch%C3%A1cara%20Teixeira%20Festas%20%26%20Eventos%2C%20R.%20Henrique%20Ribeiro%20da%20Silva%2C%20Paratibe%2C%20Jo%C3%A3o%20Pessoa%20PB" target="_blank" rel="noopener noreferrer">Ver localização</a>
+                </article>
             </div>
         </section>
 
-        <section class="secao" id="cerimonia">
-            <p class="etiqueta">A CELEBRAÇÃO</p>
-            <h2>Cerimônia</h2>
+        <!-- CONFIRMAÇÃO DE PRESENÇA -->
+        <section class="secao presenca" id="presenca">
 
-            <h3>Paróquia Santa Edwiges</h3>
+            <p class="destaque">
+                Você é nosso convidado especial
+            </p>
 
-            <p class="endereco">
-                R. Jaguatirica, 342 - Paratibe,<br>
-                João Pessoa - PB, 58033-455, Brasil
+            <h2>Confirme sua presença</h2>
+
+            <p>
+                Para nos ajudar na organização, informe seus dados
+                e confirme se poderá participar.
+            </p>
+
+            <form id="form-presenca">
+
+                <label for="nome">Nome completo</label>
+
+                <input
+                    type="text"
+                    id="nome"
+                    name="nome"
+                    placeholder="Digite seu nome"
+                    minlength="2"
+                    maxlength="100"
+                    autocomplete="name"
+                    required
+                >
+
+
+                <label for="quantidade">
+                    Quantidade de pessoas
+                </label>
+
+                <select
+                    id="quantidade"
+                    name="quantidade"
+                    required>
+
+                    <option value="1">1 pessoa</option>
+                    <option value="2">2 pessoas</option>
+                    <option value="3">3 pessoas</option>
+                    <option value="4">4 pessoas</option>
+                    <option value="5">5 pessoas</option>
+
+                </select>
+
+
+                <label for="resposta">
+                    Você poderá comparecer?
+                </label>
+
+                <select
+                    id="resposta"
+                    name="resposta"
+                    required>
+
+                    <option value="Sim">
+                        Sim, estarei presente!
+                    </option>
+
+                    <option value="Não">
+                        Infelizmente, não poderei ir.
+                    </option>
+
+                </select>
+
+
+                <button type="submit" class="botao">
+                    Confirmar presença
+                </button>
+
+                <!-- Mensagem de sucesso ou erro -->
+                <p
+                    id="retorno-formulario"
+                    aria-live="polite">
+                </p>
+
+            </form>
+
+        </section>
+
+
+        <!-- LISTA DE PRESENTES -->
+        <section class="secao" id="presentes">
+
+            <p class="destaque">Com carinho</p>
+
+            <h2>Lista de presentes</h2>
+
+            <p>
+                Sua presença é o nosso maior presente!
+                Se desejar nos presentear, em breve disponibilizaremos
+                aqui as opções da nossa lista.
             </p>
 
             <a
-                class="botao"
-                href="https://www.google.com/maps/search/?api=1&query=Par%C3%B3quia+Santa+Edwiges%2C+R.+Jaguatirica%2C+342%2C+Paratibe%2C+Jo%C3%A3o+Pessoa%2C+PB"
+                id="link-presentes"
+                class="botao secundario"
+                href="#presentes"
                 target="_blank"
                 rel="noopener noreferrer"
-            >
-                Ver localização
+                hidden>
+                Ver lista de presentes
             </a>
+
         </section>
 
-        <section class="secao recepcao" id="recepcao">
-            <p class="etiqueta">VAMOS COMEMORAR</p>
-            <h2>Recepção</h2>
-
-            <h3>Chácara Teixeira Festas &amp; Eventos</h3>
-
-            <p class="endereco">
-                R. Henrique Ribeiro da Silva, s/n - Paratibe,<br>
-                João Pessoa - PB, 58062-473, Brasil
-            </p>
-
-            <a
-                class="botao"
-                href="https://www.google.com/maps/search/?api=1&query=Ch%C3%A1cara+Teixeira+Festas+%26+Eventos%2C+R.+Henrique+Ribeiro+da+Silva%2C+Paratibe%2C+Jo%C3%A3o+Pessoa%2C+PB"
-                target="_blank"
-                rel="noopener noreferrer"
-            >
-                Ver localização
-            </a>
-        </section>
-
-        <section class="secao mensagem">
-            <p class="frase">
-                Será uma alegria compartilhar esse momento tão especial
-                com pessoas queridas como você!
-            </p>
-            <p>Esperamos você!</p>
-        </section>
     </main>
 
-    <footer class="rodape">
-        <p>Com carinho, Katyane &amp; Adeildo</p>
-        <p>05.12.2026</p>
+
+    <!-- RODAPÉ -->
+    <footer>
+
+        <p>Feito com amor para celebrar</p>
+
+        <p class="assinatura">
+            Katyane & Adeildo
+        </p>
+
+        <a href="#inicio">
+            Voltar ao início ↑
+        </a>
+
     </footer>
+
 </body>
+
 </html>

@@ -1,30 +1,309 @@
-
-/* Cards das informações do casamento */
-#cerimonia,
-#recepcao,
-.data-casamento {
-    width: calc(100% - 40px);
-    max-width: 750px;
-    margin: 30px auto;
-    padding: 40px 25px;
-    background-color: #ffffff;
-    border: 1px solid #e2d4c3;
-    border-radius: 12px;
-    box-shadow: 0 4px 14px rgba(100, 75, 45, 0.08);
+:root {
+    --creme: #fbf7f0;
+    --branco: #fffdf9;
+    --dourado: #ad8955;
+    --texto: #51453d;
+    --verde: #727b66;
 }
 
-/* Card da recepção */
-#recepcao {
-    background-color: #eee5d9;
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
-/* Ajustes para celulares */
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background: var(--creme);
+    color: var(--texto);
+    font-family: "Montserrat", sans-serif;
+    line-height: 1.7;
+}
+
+.capa {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 30px 20px;
+    position: relative;
+    background:
+        linear-gradient(
+            rgba(251, 247, 240, 0.78),
+            rgba(251, 247, 240, 0.91)
+        ),
+        url("https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=1800&q=85")
+        center / cover no-repeat;
+}
+
+.menu {
+    position: absolute;
+    top: 25px;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 25px;
+    padding: 0 15px;
+}
+
+.menu a,
+footer a {
+    color: var(--texto);
+    text-decoration: none;
+    font-size: 0.85rem;
+}
+
+.menu a:hover,
+footer a:hover {
+    color: var(--dourado);
+}
+
+.capa-conteudo {
+    max-width: 850px;
+    padding-top: 60px;
+}
+
+.subtitulo,
+.destaque {
+    color: var(--dourado);
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    font-size: 0.78rem;
+}
+
+.capa h1 {
+    font-family: "Great Vibes", cursive;
+    font-size: clamp(3.8rem, 9vw, 7rem);
+    font-weight: 400;
+    color: var(--dourado);
+    line-height: 1.3;
+    margin: 20px 0;
+}
+
+.capa h1 span {
+    font-size: 0.65em;
+}
+
+.frase {
+    font-size: 1rem;
+    margin-bottom: 28px;
+}
+
+.data-capa {
+    letter-spacing: 3px;
+    margin-bottom: 30px;
+}
+
+.botao {
+    display: inline-block;
+    border: 1px solid var(--dourado);
+    background: var(--dourado);
+    color: white;
+    padding: 13px 25px;
+    text-decoration: none;
+    font: inherit;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.botao:hover {
+    background: #927044;
+    border-color: #927044;
+}
+
+.secao {
+    padding: 85px 20px;
+    text-align: center;
+    max-width: 1000px;
+    margin: auto;
+    scroll-margin-top: 25px;
+}
+
+.secao h2 {
+    font-family: "Great Vibes", cursive;
+    font-weight: 400;
+    font-size: clamp(2.7rem, 6vw, 4rem);
+    color: var(--dourado);
+    margin: 10px 0 25px;
+    line-height: 1.3;
+}
+
+.introducao > p:last-child,
+.presenca > p:not(.destaque),
+#presentes > p:not(.destaque) {
+    max-width: 650px;
+    margin: 0 auto;
+}
+
+.contagem {
+    background: var(--branco);
+    max-width: none;
+}
+
+.relogio {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+    margin: 35px 0 15px;
+}
+
+.relogio div {
+    min-width: 100px;
+    padding: 20px 12px;
+    border: 1px solid #ddcbb0;
+}
+
+.relogio span {
+    display: block;
+    font-size: 2.2rem;
+    color: var(--dourado);
+}
+
+.relogio small {
+    text-transform: uppercase;
+    font-size: 0.7rem;
+    letter-spacing: 1px;
+}
+
+.detalhes-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 25px;
+    margin-top: 35px;
+}
+
+.detalhe-card {
+    padding: 35px 20px;
+    background: var(--branco);
+    border: 1px solid #e9dfd0;
+}
+
+.icone {
+    display: block;
+    color: var(--dourado);
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+}
+
+.detalhe-card h3 {
+    margin-bottom: 15px;
+    font-weight: 500;
+}
+
+.detalhe-card a {
+    display: inline-block;
+    color: var(--dourado);
+    margin-top: 12px;
+}
+
+.presenca {
+    max-width: none;
+    background: #f1e9dd;
+}
+
+#form-presenca {
+    max-width: 500px;
+    margin: 30px auto 0;
+    text-align: left;
+}
+
+#form-presenca label {
+    display: block;
+    margin: 17px 0 7px;
+    font-size: 0.9rem;
+}
+
+#form-presenca input,
+#form-presenca select {
+    width: 100%;
+    padding: 13px;
+    background: var(--branco);
+    border: 1px solid #d9cbb8;
+    border-radius: 0;
+    color: var(--texto);
+    font: inherit;
+}
+
+#form-presenca input:focus,
+#form-presenca select:focus {
+    outline: 2px solid var(--dourado);
+    outline-offset: 2px;
+}
+
+#form-presenca button {
+    width: 100%;
+    margin-top: 25px;
+}
+
+#retorno-form {
+    margin-top: 15px;
+    text-align: center;
+}
+
+.secundario {
+    margin-top: 25px;
+}
+
+footer {
+    text-align: center;
+    padding: 35px 20px;
+    background: var(--branco);
+}
+
+.assinatura {
+    font-family: "Great Vibes", cursive;
+    color: var(--dourado);
+    font-size: 2.5rem;
+    margin: 8px 0;
+}
+
 @media (max-width: 600px) {
-    #cerimonia,
-    #recepcao,
-    .data-casamento {
-        width: calc(100% - 30px);
-        padding: 30px 18px;
-        margin: 20px auto;
+    .menu {
+        gap: 12px;
+        top: 15px;
+    }
+
+    .menu a {
+        font-size: 0.72rem;
+    }
+
+    .capa-conteudo {
+        padding-top: 70px;
+    }
+
+    .subtitulo,
+    .destaque {
+        letter-spacing: 2px;
+        font-size: 0.68rem;
+    }
+
+    .secao {
+        padding: 60px 18px;
+    }
+
+    .detalhes-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .relogio {
+        gap: 10px;
+    }
+
+    .relogio div {
+        min-width: 72px;
+        padding: 15px 8px;
+    }
+
+    .relogio span {
+        font-size: 1.7rem;
     }
 }

@@ -1,314 +1,240 @@
 
 <!DOCTYPE html>
 <html lang="pt-br">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+    <meta name="description" content="Casamento de Katyane e Adeildo">
     <title>Katyane & Adeildo | Nosso Casamento</title>
-
-    <meta name="description"
-        content="Celebre conosco o casamento de Katyane e Adeildo.">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-    <link
-        href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Montserrat:wght@300;400;500;600&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
 
     <link rel="stylesheet" href="style.css">
 
-    <!-- Biblioteca do Supabase -->
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-
-    <!-- JavaScript do site -->
     <script src="script.js" defer></script>
 </head>
 
 <body>
 
-    <!-- CAPA -->
-    <header class="capa" id="inicio">
+<header class="capa" id="inicio">
+    <nav class="menu">
+        <a href="#inicio">Início</a>
+        <a href="#detalhes">Cerimônia</a>
+        <a href="#recepcao">Recepção</a>
+        <a href="#presenca">Presença</a>
+        <a href="#presentes">Presentes</a>
+    </nav>
 
-        <nav class="menu">
-            <a href="#inicio">Início</a>
-            <a href="#detalhes">O casamento</a>
-            <a href="#recepcao">Recepção</a>
-            <a href="#presenca">Presença</a>
-            <a href="#presentes">Presentes</a>
-        </nav>
+    <div class="capa-conteudo">
+        <p class="subtitulo">UM DIA PARA CELEBRAR O AMOR</p>
+        <h1>Katyane <span>&</span> Adeildo</h1>
+        <p class="frase">
+            Dois corações, uma história e um amor para toda a vida.
+        </p>
+        <p class="data-capa" id="data-capa">05/12/2026</p>
+        <a href="#detalhes" class="botao">Conheça os detalhes</a>
+    </div>
+</header>
 
-        <div class="capa-conteudo">
+<main>
 
-            <p class="subtitulo">UM DIA PARA CELEBRAR O AMOR</p>
+    <!-- INTRODUÇÃO -->
+    <section class="secao introducao">
+        <p class="destaque">Com amor e alegria</p>
+        <h2>Vamos celebrar juntos!</h2>
+        <p>
+            O amor nos trouxe até aqui, e será uma alegria
+            compartilhar este momento tão especial com você.
+            Sua presença fará parte da nossa história.
+        </p>
+    </section>
 
-            <h1>Katyane <span>&</span> Adeildo</h1>
+    <!-- CONTAGEM REGRESSIVA -->
+    <section class="secao contagem">
+        <p class="destaque">A contagem regressiva começou</p>
+        <h2>Falta pouco para o nosso sim!</h2>
 
-            <p class="frase">
-                Dois corações, uma história e um amor para toda a vida.
-            </p>
+        <div class="relogio">
+            <div><span id="dias">00</span><small>Dias</small></div>
+            <div><span id="horas">00</span><small>Horas</small></div>
+            <div><span id="minutos">00</span><small>Minutos</small></div>
+            <div><span id="segundos">00</span><small>Segundos</small></div>
+        </div>
 
-            <p class="data-capa" id="data-capa">
-                NOSSO GRANDE DIA
-            </p>
+        <p id="mensagem-contagem" aria-live="polite"></p>
+    </section>
 
-            <a href="#detalhes" class="botao">
-                Conheça os detalhes
-            </a>
+    <!-- CERIMÔNIA -->
+    <section class="secao" id="detalhes">
+        <p class="destaque">Anote na agenda</p>
+        <h2>Detalhes do casamento</h2>
+
+        <div class="detalhes-grid">
+
+            <article class="detalhe-card">
+                <span class="icone">♡</span>
+                <h3>A cerimônia</h3>
+                <p id="data-detalhes">05 de dezembro de 2026</p>
+                <p id="horario-detalhes">18h</p>
+            </article>
+
+            <article class="detalhe-card">
+                <span class="icone">⌖</span>
+                <h3>O local</h3>
+                <p id="local-detalhes">Paróquia Santa Edwiges</p>
+                <p id="endereco-detalhes">
+                    R. Jaguatirica, 342 - Paratibe,
+                    João Pessoa - PB, 58033-455
+                </p>
+                <a id="link-mapa" href="#" target="_blank"
+                   rel="noopener noreferrer">
+                    Ver localização
+                </a>
+            </article>
 
         </div>
-    </header>
+    </section>
 
+    <!-- RECEPÇÃO -->
+    <section class="secao" id="recepcao">
+        <p class="destaque">Depois da cerimônia</p>
+        <h2>Recepção</h2>
 
-    <main>
-
-        <!-- INTRODUÇÃO -->
-        <section class="secao introducao">
-
-            <p class="destaque">Com amor e alegria</p>
-
-            <h2>Vamos celebrar juntos!</h2>
-
-            <p>
-                O amor nos trouxe até aqui, e será uma alegria
-                compartilhar este momento tão especial com você.
-                Sua presença fará parte da nossa história.
-            </p>
-
-        </section>
-
-
-        <!-- CONTAGEM REGRESSIVA -->
-        <section class="secao contagem">
-
-            <p class="destaque">A contagem regressiva começou</p>
-
-            <h2>Falta pouco para o nosso sim!</h2>
-
-            <div class="relogio">
-
-                <div>
-                    <span id="dias">00</span>
-                    <small>Dias</small>
-                </div>
-
-                <div>
-                    <span id="horas">00</span>
-                    <small>Horas</small>
-                </div>
-
-                <div>
-                    <span id="minutos">00</span>
-                    <small>Minutos</small>
-                </div>
-
-                <div>
-                    <span id="segundos">00</span>
-                    <small>Segundos</small>
-                </div>
-
-            </div>
-
-            <p id="mensagem-contagem" aria-live="polite"></p>
-
-        </section>
-
-
-        <!-- DETALHES DO CASAMENTO -->
-        <section class="secao" id="detalhes">
-
-            <p class="destaque">Anote na agenda</p>
-
-            <h2>Detalhes do casamento</h2>
-
-            <div class="detalhes-grid">
-
-                <article class="detalhe-card">
-
-                    <span class="icone">♡</span>
-
-                    <h3>A cerimônia</h3>
-
-                    <p id="data-detalhes">Data a definir</p>
-
-                    <p id="horario-detalhes">
-                        Horário a definir
-                    </p>
-
-                </article>
-
-
-                <article class="detalhe-card">
-
-                    <span class="icone">⌖</span>
-
-                    <h3>O local</h3>
-
-                    <p id="local-detalhes">
-                        Local a definir
-                    </p>
-
-                    <p id="endereco-detalhes">
-                        Endereço a definir
-                    </p>
-
-                    <a
-                        id="link-mapa"
-                        href="#detalhes"
-                        target="_blank"
-                        rel="noopener noreferrer">
-                        Ver localização
-                    </a>
-
-                </article>
-
-            </div>
-
-        </section>
-
-
-        <!-- RECEPÇÃO -->
-        <section class="secao" id="recepcao">
-            <p class="destaque">Depois da cerimônia</p>
-            <h2>Recepção</h2>
-            <div class="detalhes-grid" style="grid-template-columns: minmax(0, 1fr); max-width: 650px; margin-left: auto; margin-right: auto;">
-                <article class="detalhe-card">
-                    <span class="icone">♡</span>
-                    <h3>Chácara Teixeira Festas &amp; Eventos</h3>
-                    <p>R. Henrique Ribeiro da Silva, s/n - Paratibe, João Pessoa - PB, 58062-473, Brasil</p>
-                    <a href="https://www.google.com/maps/search/?api=1&amp;query=Ch%C3%A1cara%20Teixeira%20Festas%20%26%20Eventos%2C%20R.%20Henrique%20Ribeiro%20da%20Silva%2C%20Paratibe%2C%20Jo%C3%A3o%20Pessoa%20PB" target="_blank" rel="noopener noreferrer">Ver localização</a>
-                </article>
-            </div>
-        </section>
-
-        <!-- CONFIRMAÇÃO DE PRESENÇA -->
-        <section class="secao presenca" id="presenca">
-
-            <p class="destaque">
-                Você é nosso convidado especial
-            </p>
-
-            <h2>Confirme sua presença</h2>
-
-            <p>
-                Para nos ajudar na organização, informe seus dados
-                e confirme se poderá participar.
-            </p>
-
-            <form id="form-presenca">
-
-                <label for="nome">Nome completo</label>
-
-                <input
-                    type="text"
-                    id="nome"
-                    name="nome"
-                    placeholder="Digite seu nome"
-                    minlength="2"
-                    maxlength="100"
-                    autocomplete="name"
-                    required
-                >
-
-
-                <label for="quantidade">
-                    Quantidade de pessoas
-                </label>
-
-                <select
-                    id="quantidade"
-                    name="quantidade"
-                    required>
-
-                    <option value="1">1 pessoa</option>
-                    <option value="2">2 pessoas</option>
-                    <option value="3">3 pessoas</option>
-                    <option value="4">4 pessoas</option>
-                    <option value="5">5 pessoas</option>
-
-                </select>
-
-
-                <label for="resposta">
-                    Você poderá comparecer?
-                </label>
-
-                <select
-                    id="resposta"
-                    name="resposta"
-                    required>
-
-                    <option value="Sim">
-                        Sim, estarei presente!
-                    </option>
-
-                    <option value="Não">
-                        Infelizmente, não poderei ir.
-                    </option>
-
-                </select>
-
-
-                <button type="submit" class="botao">
-                    Confirmar presença
-                </button>
-
-                <!-- Mensagem de sucesso ou erro -->
-                <p
-                    id="retorno-formulario"
-                    aria-live="polite">
+        <div class="detalhes-grid recepcao-grid">
+            <article class="detalhe-card">
+                <span class="icone">♡</span>
+                <h3>Chácara Teixeira Festas &amp; Eventos</h3>
+                <p>
+                    R. Henrique Ribeiro da Silva, s/n -
+                    Paratibe, João Pessoa - PB, 58062-473
                 </p>
+                <a id="link-recepcao" href="#" target="_blank"
+                   rel="noopener noreferrer">
+                    Ver localização
+                </a>
+            </article>
+        </div>
+    </section>
 
-            </form>
+    <!-- CONFIRMAÇÃO DE PRESENÇA -->
+    <section class="secao presenca" id="presenca">
+        <p class="destaque">Você é nosso convidado especial</p>
+        <h2>Confirme sua presença</h2>
 
-        </section>
-
-
-        <!-- LISTA DE PRESENTES -->
-        <section class="secao" id="presentes">
-
-            <p class="destaque">Com carinho</p>
-
-            <h2>Lista de presentes</h2>
-
-            <p>
-                Sua presença é o nosso maior presente!
-                Se desejar nos presentear, em breve disponibilizaremos
-                aqui as opções da nossa lista.
-            </p>
-
-            <a
-                id="link-presentes"
-                class="botao secundario"
-                href="#presentes"
-                target="_blank"
-                rel="noopener noreferrer"
-                hidden>
-                Ver lista de presentes
-            </a>
-
-        </section>
-
-    </main>
-
-
-    <!-- RODAPÉ -->
-    <footer>
-
-        <p>Feito com amor para celebrar</p>
-
-        <p class="assinatura">
-            Katyane & Adeildo
+        <p>
+            Para nos ajudar na organização, informe seus dados
+            e confirme se poderá participar.
         </p>
 
-        <a href="#inicio">
-            Voltar ao início ↑
-        </a>
+        <form id="form-presenca">
 
-    </footer>
+            <label for="nome">Nome completo</label>
+            <input type="text" id="nome" name="nome"
+                   placeholder="Digite seu nome"
+                   minlength="2" maxlength="100"
+                   autocomplete="name" required>
+
+            <label for="quantidade">Quantidade de pessoas</label>
+            <select id="quantidade" name="quantidade" required>
+                <option value="1">1 pessoa</option>
+                <option value="2">2 pessoas</option>
+                <option value="3">3 pessoas</option>
+                <option value="4">4 pessoas</option>
+                <option value="5">5 pessoas</option>
+            </select>
+
+            <label for="resposta">Você poderá comparecer?</label>
+            <select id="resposta" name="resposta" required>
+                <option value="Sim">Sim, estarei presente!</option>
+                <option value="Não">
+                    Infelizmente, não poderei ir.
+                </option>
+            </select>
+
+            <button type="submit" class="botao">
+                Confirmar presença
+            </button>
+
+            <p id="retorno-formulario"
+               role="status" aria-live="polite"></p>
+        </form>
+    </section>
+
+    <!-- LISTA DE PRESENTES E PIX -->
+    <section class="secao" id="presentes">
+        <p class="destaque">Com muito carinho</p>
+        <h2>Lista de Presentes</h2>
+
+        <p>
+            Sua presença é o nosso maior presente!
+            Mas, se desejar nos presentear, preparamos
+            duas opções com muito carinho.
+        </p>
+
+        <div class="presentes-grid">
+
+            <article class="detalhe-card presente-card">
+                <span class="icone">♡</span>
+                <h3>Lista de Presentes</h3>
+
+                <p>
+                    Escolha um presente especial
+                    na nossa lista de presentes.
+                </p>
+
+                <a id="link-presentes"
+                   class="botao"
+                   href="https://lista.havan.com.br//Convidado/ItensListaPresente/967848?aba=sobre"
+                   target="_blank"
+                   rel="noopener noreferrer">
+                    Ver lista de presentes
+                </a>
+            </article>
+
+            <article class="detalhe-card presente-card">
+                <span class="icone">✧</span>
+                <h3>Presentear via PIX</h3>
+
+                <p>
+                    Se preferir, você também pode
+                    nos presentear através do PIX.
+                </p>
+
+                <p class="pix-titular">
+                    Titular:
+                    <strong>Katyane Martins Campos</strong>
+                </p>
+
+                <label for="chave-pix">Chave PIX (telefone)</label>
+                <input type="text"
+                       id="chave-pix"
+                       class="pix-chave"
+                       value="83 99342-7973"
+                       readonly>
+
+                <button type="button"
+                        class="botao"
+                        id="copiar-pix">
+                    Copiar chave PIX
+                </button>
+
+                <p id="mensagem-pix"
+                   role="status" aria-live="polite"></p>
+            </article>
+
+        </div>
+    </section>
+
+</main>
+
+<footer>
+    <p>Feito com amor para celebrar</p>
+    <p class="assinatura">Katyane & Adeildo</p>
+    <a href="#inicio">Voltar ao início ↑</a>
+</footer>
 
 </body>
-
 </html>

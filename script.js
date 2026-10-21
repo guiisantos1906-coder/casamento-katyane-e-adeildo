@@ -8,50 +8,71 @@ const casamento = {
     horario: "18h",
     local: "Paróquia Santa Edwiges",
     endereco: "R. Jaguatirica, 342 - Paratibe, João Pessoa - PB, 58033-455, Brasil",
-    listaPresentes: ""
+
+    recepcao: "Chácara Teixeira Festas & Eventos",
+    enderecoRecepcao: "R. Henrique Ribeiro da Silva, s/n - Paratibe, João Pessoa - PB, 58062-473, Brasil",
+
+    listaPresentes: "https://lista.havan.com.br//Convidado/ItensListaPresente/967848?aba=sobre",
+
+    chavePix: "83993427973"
 };
 
-
 /* ========================================
-   CONFIGURAÇÃO DO SUPABASE
+   SUPABASE
 ======================================== */
 
-// Cole aqui a Project URL e a chave pública
-// encontradas nas configurações do seu projeto Supabase.
+const SUPABASE_URL =
+    "https://usdsdpseddfwugkugecu.supabase.co";
 
-const SUPABASE_URL = "https://usdsdpseddfwugkugecu.supabase.co";
-const SUPABASE_PUBLISHABLE_KEY = "sb_publishable_PkNICAnaF5f5Tr5QNOvCBg_Ox7R9vG7";
-
-
-// Inicializa o Supabase somente se a biblioteca
-// estiver carregada e as credenciais preenchidas.
+const SUPABASE_PUBLISHABLE_KEY =
+    "sb_publishable_PkNICAnaF5f5Tr5QNOvCBg_Ox7R9vG7";
 
 let banco = null;
 
-if (
-    window.supabase &&
-    SUPABASE_URL !== "COLE_AQUI_SUA_PROJECT_URL" &&
-    SUPABASE_PUBLISHABLE_KEY !== "COLE_AQUI_SUA_CHAVE_PUBLICA"
-) {
+if (window.supabase) {
     banco = window.supabase.createClient(
         SUPABASE_URL,
         SUPABASE_PUBLISHABLE_KEY
     );
 }
 
-
 /* ========================================
    INFORMAÇÕES DO CASAMENTO
 ======================================== */
+
+const dataCasamento = new Date(casamento.data);
 
 const dataElement = document.getElementById("data-detalhes");
 const dataCapa = document.getElementById("data-capa");
 const horarioElement = document.getElementById("horario-detalhes");
 const localElement = document.getElementById("local-detalhes");
 const enderecoElement = document.getElementById("endereco-detalhes");
-const linkMapa = document.getElementById("link-mapa");
-const linkPresentes = document.getElementById("link-presentes");
 
+const dataFormatada = dataCasamento.toLocaleDateString(
+    "pt-BR",
+    {
+        day: "2-digit",
+        month: "long",
+        year: "numeric",
+        timeZone: "America/Fortaleza"
+    }
+);
+
+if (dataElement) {
+    dataElement.textContent = dataFormatada;
+}
+
+if (dataCapa) {
+    dataCapa.textContent = dataCasamento.toLocaleDateString(
+        "pt-BR",
+        {
+            day: "2-digit",
+            month: "2-digit",
+            year: "numeric",
+            timeZone: "America/Fortaleza"
+        }
+    );
+}
 
 if (horarioElement) {
     horarioElement.textContent = casamento.horario;
@@ -65,99 +86,84 @@ if (enderecoElement) {
     enderecoElement.textContent = casamento.endereco;
 }
 
-
 /* ========================================
-   FORMATAÇÃO DA DATA
+   MAPAS
 ======================================== */
 
-const dataCasamento = new Date(casamento.data);
-
-if (!Number.isNaN(dataCasamento.getTime())) {
-    const dataFormatada = dataCasamento.toLocaleDateString("pt-BR", {
-        day: "2-digit",
-        month: "long",
-        year: "numeric",
-        timeZone: "America/Fortaleza"
-    });
-
-    if (dataElement) {
-        dataElement.textContent = dataFormatada;
-    }
-
-    if (dataCapa) {
-        dataCapa.textContent = dataCasamento.toLocaleDateString("pt-BR", {
-            day: "2-digit",
-            month: "2-digit",
-            year: "numeric",
-            timeZone: "America/Fortaleza"
-        });
-    }
-
-    iniciarContagem(dataCasamento.getTime());
+function criarLinkMapa(endereco) {
+    return "https://www.google.com/maps/search/?api=1&query="
+        + encodeURIComponent(endereco);
 }
 
-
-/* ========================================
-   LINK PARA O GOOGLE MAPS
-======================================== */
+const linkMapa = document.getElementById("link-mapa");
 
 if (linkMapa) {
-    const enderecoCodificado = encodeURIComponent(casamento.endereco);
-
-    linkMapa.href =
-        `https://www.google.com/maps/search/?api=1&query=${enderecoCodificado}`;
-
-    linkMapa.target = "_blank";
-    linkMapa.rel = "noopener noreferrer";
-    linkMapa.hidden = !casamento.endereco;
+    linkMapa.href = criarLinkMapa(casamento.endereco);
 }
 
+const linkRecepcao = document.getElementById("link-recepcao");
+
+if (linkRecepcao) {
+    linkRecepcao.href = criarLinkMapa(
+        casamento.recepcao + ", " + casamento.enderecoRecepcao
+    );
+}
 
 /* ========================================
    LISTA DE PRESENTES
 ======================================== */
 
-if (linkPresentes) {
-    if (casamento.listaPresentes.trim() !== "") {
-        linkPresentes.href = casamento.listaPresentes;
-        linkPresentes.target = "_blank";
-        linkPresentes.rel = "noopener noreferrer";
-        linkPresentes.hidden = false;
-    } else {
-        linkPresentes.hidden = true;
-    }
-}
+const linkPresentes = document.getElementById("link-presentes");
 
+if (linkPresentes) {
+    linkPresentes.href = casamento.listaPresentes;
+    linkPresentes.target = "_blank";
+    linkPresentes.rel = "noopener noreferrer";
+    linkPresentes.hidden = false;
+}
 
 /* ========================================
    CONTAGEM REGRESSIVA
 ======================================== */
 
 function iniciarContagem(dataAlvo) {
+
     const diasElement = document.getElementById("dias");
     const horasElement = document.getElementById("horas");
     const minutosElement = document.getElementById("minutos");
     const segundosElement = document.getElementById("segundos");
+    const mensagem = document.getElementById("mensagem-contagem");
 
     function atualizarContagem() {
-        const agora = Date.now();
-        const diferenca = dataAlvo - agora;
+
+        const diferenca = dataAlvo - Date.now();
 
         if (diferenca <= 0) {
+
             if (diasElement) diasElement.textContent = "0";
             if (horasElement) horasElement.textContent = "0";
             if (minutosElement) minutosElement.textContent = "0";
             if (segundosElement) segundosElement.textContent = "0";
+
+            if (mensagem) {
+                mensagem.textContent = "Chegou o grande dia!";
+            }
+
             return;
         }
 
-        const dias = Math.floor(diferenca / (1000 * 60 * 60 * 24));
+        const dias = Math.floor(
+            diferenca / (1000 * 60 * 60 * 24)
+        );
+
         const horas = Math.floor(
             (diferenca / (1000 * 60 * 60)) % 24
         );
+
         const minutos = Math.floor(
             (diferenca / (1000 * 60)) % 60
         );
+
         const segundos = Math.floor(
             (diferenca / 1000) % 60
         );
@@ -169,72 +175,76 @@ function iniciarContagem(dataAlvo) {
     }
 
     atualizarContagem();
+
     setInterval(atualizarContagem, 1000);
 }
 
+if (!Number.isNaN(dataCasamento.getTime())) {
+    iniciarContagem(dataCasamento.getTime());
+}
 
 /* ========================================
-   CONFIRMAÇÃO DE PRESENÇA (RSVP)
+   CONFIRMAÇÃO DE PRESENÇA
 ======================================== */
 
 const formulario = document.getElementById("form-presenca");
 
 if (formulario) {
+
     formulario.addEventListener("submit", async function (event) {
+
         event.preventDefault();
 
         const nomeInput = document.getElementById("nome");
         const quantidadeInput = document.getElementById("quantidade");
         const respostaInput = document.getElementById("resposta");
-        const retorno = document.getElementById("retorno-formulario");
-        const botao = formulario.querySelector('[type="submit"]');
 
-        const nome = nomeInput?.value.trim();
-        const quantidade = Number(quantidadeInput?.value);
-        const resposta = respostaInput?.value;
+        const retorno = document.getElementById(
+            "retorno-formulario"
+        );
 
-        if (!nome || nome.length < 2 || nome.length > 100) {
-            if (retorno) {
-                retorno.textContent =
-                    "Digite seu nome completo (de 2 a 100 caracteres).";
-            }
+        const botao = formulario.querySelector(
+            'button[type="submit"]'
+        );
+
+        const nome = nomeInput.value.trim();
+        const quantidade = Number(quantidadeInput.value);
+        const resposta = respostaInput.value;
+
+        if (nome.length < 2 || nome.length > 100) {
+            retorno.textContent =
+                "Digite um nome válido.";
             return;
         }
 
-        if (!Number.isInteger(quantidade) || quantidade < 1 || quantidade > 5) {
-            if (retorno) {
-                retorno.textContent =
-                    "Informe uma quantidade válida, entre 1 e 5 pessoas.";
-            }
+        if (
+            !Number.isInteger(quantidade) ||
+            quantidade < 1 ||
+            quantidade > 5
+        ) {
+            retorno.textContent =
+                "Informe uma quantidade entre 1 e 5 pessoas.";
             return;
         }
 
         if (resposta !== "Sim" && resposta !== "Não") {
-            if (retorno) {
-                retorno.textContent =
-                    "Selecione se você poderá comparecer.";
-            }
+            retorno.textContent =
+                "Selecione uma resposta válida.";
             return;
         }
 
         if (!banco) {
-            if (retorno) {
-                retorno.textContent =
-                    "A confirmação ainda não está conectada. Verifique as configurações do Supabase.";
-            }
+            retorno.textContent =
+                "Não foi possível conectar ao sistema de confirmação.";
             return;
         }
 
-        if (botao) {
-            botao.disabled = true;
-            botao.textContent = "Enviando...";
-        }
-
-        if (retorno) {
-            retorno.textContent = "";
-        }
+        botao.disabled = true;
+        botao.textContent = "Enviando...";
+        retorno.textContent = "";
 
         try {
+
             const { error } = await banco
                 .from("rsvps")
                 .insert([
@@ -246,29 +256,73 @@ if (formulario) {
                 ]);
 
             if (error) {
-                console.error("Erro ao salvar confirmação:", error);
                 throw error;
             }
 
-            if (retorno) {
-                retorno.textContent =
-                    "Obrigado! Sua confirmação foi registrada com sucesso.";
-            }
+            retorno.textContent =
+                "Obrigado! Sua confirmação foi registrada com sucesso.";
 
             formulario.reset();
 
         } catch (erro) {
-            console.error("Não foi possível registrar a confirmação:", erro);
 
-            if (retorno) {
-                retorno.textContent =
-                    "Não foi possível registrar sua confirmação. Tente novamente mais tarde.";
-            }
+            console.error(
+                "Erro ao registrar confirmação:",
+                erro
+            );
+
+            retorno.textContent =
+                "Não foi possível registrar sua confirmação. Tente novamente.";
+
         } finally {
-            if (botao) {
-                botao.disabled = false;
-                botao.textContent = "Confirmar presença";
-            }
+
+            botao.disabled = false;
+            botao.textContent = "Confirmar presença";
         }
+
+    });
+}
+
+/* ========================================
+   COPIAR CHAVE PIX
+======================================== */
+
+const botaoPix = document.getElementById("copiar-pix");
+
+if (botaoPix) {
+
+    botaoPix.addEventListener("click", async function () {
+
+        const campoPix = document.getElementById("chave-pix");
+        const mensagemPix = document.getElementById("mensagem-pix");
+
+        const chave = casamento.chavePix;
+
+        try {
+
+            if (!navigator.clipboard) {
+                throw new Error("Área de transferência indisponível");
+            }
+
+            await navigator.clipboard.writeText(chave);
+
+            mensagemPix.textContent =
+                "Chave PIX copiada com sucesso!";
+
+            botaoPix.textContent = "Copiado!";
+
+            setTimeout(function () {
+                botaoPix.textContent = "Copiar chave PIX";
+            }, 3000);
+
+        } catch (erro) {
+
+            campoPix.focus();
+            campoPix.select();
+
+            mensagemPix.textContent =
+                "Selecione a chave acima e copie manualmente.";
+        }
+
     });
 }

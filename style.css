@@ -1,12 +1,9 @@
-
-/* CORES DO CASAMENTO */
 :root {
-    --azul: #234d7d;
-    --azul-escuro: #17395f;
-    --azul-claro: #edf4fb;
+    --creme: #f3f7fc;
     --branco: #ffffff;
     --dourado: #bd9851;
     --texto: #243b59;
+    --verde: #315b88;
 }
 
 * {
@@ -20,13 +17,12 @@ html {
 }
 
 body {
-    background: var(--azul-claro);
+    background: var(--creme);
     color: var(--texto);
     font-family: "Montserrat", sans-serif;
     line-height: 1.7;
 }
 
-/* CAPA */
 .capa {
     min-height: 100vh;
     display: flex;
@@ -34,18 +30,17 @@ body {
     align-items: center;
     justify-content: center;
     text-align: center;
-    padding: 35px 20px;
+    padding: 30px 20px;
     position: relative;
     background:
         linear-gradient(
-            rgba(237, 244, 251, 0.83),
-            rgba(237, 244, 251, 0.94)
+            rgba(239, 246, 255, 0.79),
+            rgba(244, 248, 253, 0.94)
         ),
         url("https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=1800&q=85")
         center / cover no-repeat;
 }
 
-/* MENU */
 .menu {
     position: absolute;
     top: 25px;
@@ -54,13 +49,13 @@ body {
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
-    gap: 22px;
+    gap: 25px;
     padding: 0 15px;
 }
 
 .menu a,
 footer a {
-    color: var(--azul);
+    color: var(--texto);
     text-decoration: none;
     font-size: 0.85rem;
 }
@@ -72,7 +67,7 @@ footer a:hover {
 
 .capa-conteudo {
     max-width: 850px;
-    padding-top: 70px;
+    padding-top: 60px;
 }
 
 .subtitulo,
@@ -81,20 +76,18 @@ footer a:hover {
     text-transform: uppercase;
     letter-spacing: 3px;
     font-size: 0.78rem;
-    font-weight: 600;
 }
 
 .capa h1 {
     font-family: "Great Vibes", cursive;
     font-size: clamp(3.8rem, 9vw, 7rem);
     font-weight: 400;
-    color: var(--azul);
+    color: var(--dourado);
     line-height: 1.3;
     margin: 20px 0;
 }
 
 .capa h1 span {
-    color: var(--dourado);
     font-size: 0.65em;
 }
 
@@ -106,16 +99,13 @@ footer a:hover {
 .data-capa {
     letter-spacing: 3px;
     margin-bottom: 30px;
-    color: var(--azul);
 }
 
-/* BOTÕES */
 .botao {
     display: inline-block;
-    background: var(--azul);
-    color: var(--branco);
-    border: 1px solid var(--azul);
-    border-radius: 5px;
+    border: 1px solid var(--dourado);
+    background: #234d7d;
+    color: white;
     padding: 13px 25px;
     text-decoration: none;
     font: inherit;
@@ -125,17 +115,10 @@ footer a:hover {
 }
 
 .botao:hover {
-    background: var(--azul-escuro);
-    border-color: var(--azul-escuro);
-    color: var(--branco);
+    background: #17395f;
+    border-color: #17395f;
 }
 
-.botao:disabled {
-    opacity: 0.65;
-    cursor: wait;
-}
-
-/* SEÇÕES */
 .secao {
     padding: 85px 20px;
     text-align: center;
@@ -148,7 +131,7 @@ footer a:hover {
     font-family: "Great Vibes", cursive;
     font-weight: 400;
     font-size: clamp(2.7rem, 6vw, 4rem);
-    color: var(--azul);
+    color: var(--dourado);
     margin: 10px 0 25px;
     line-height: 1.3;
 }
@@ -160,7 +143,6 @@ footer a:hover {
     margin: 0 auto;
 }
 
-/* CONTAGEM REGRESSIVA */
 .contagem {
     background: var(--branco);
     max-width: none;
@@ -169,23 +151,21 @@ footer a:hover {
 .relogio {
     display: flex;
     justify-content: center;
-    flex-wrap: wrap;
     gap: 20px;
+    flex-wrap: wrap;
     margin: 35px 0 15px;
 }
 
 .relogio div {
     min-width: 100px;
     padding: 20px 12px;
-    border: 1px solid var(--dourado);
-    border-radius: 6px;
-    background: var(--azul-claro);
+    border: 1px solid #c5d6e9;
 }
 
 .relogio span {
     display: block;
     font-size: 2.2rem;
-    color: var(--azul);
+    color: var(--dourado);
 }
 
 .relogio small {
@@ -194,7 +174,6 @@ footer a:hover {
     letter-spacing: 1px;
 }
 
-/* QUADRADOS DO CASAMENTO */
 .detalhes-grid {
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -206,9 +185,6 @@ footer a:hover {
     padding: 35px 20px;
     background: var(--branco);
     border: 1px solid #d7e3f0;
-    border-top: 3px solid var(--dourado);
-    border-radius: 8px;
-    box-shadow: 0 8px 26px rgba(27, 66, 111, 0.07);
 }
 
 .icone {
@@ -220,33 +196,18 @@ footer a:hover {
 
 .detalhe-card h3 {
     margin-bottom: 15px;
-    color: var(--azul);
     font-weight: 500;
 }
 
-.detalhe-card a:not(.botao) {
+.detalhe-card a {
     display: inline-block;
-    color: var(--azul);
-    margin-top: 12px;
-    font-weight: 600;
-}
-
-.detalhe-card a:not(.botao):hover {
     color: var(--dourado);
+    margin-top: 12px;
 }
 
-/* RECEPÇÃO */
-.recepcao-grid {
-    grid-template-columns: minmax(0, 1fr);
-    max-width: 650px;
-    margin-left: auto;
-    margin-right: auto;
-}
-
-/* CONFIRMAÇÃO DE PRESENÇA */
 .presenca {
     max-width: none;
-    background: #e3edf8;
+    background: #e6eff9;
 }
 
 #form-presenca {
@@ -266,15 +227,14 @@ footer a:hover {
     width: 100%;
     padding: 13px;
     background: var(--branco);
-    border: 1px solid #b9cadc;
-    border-radius: 5px;
+    border: 1px solid #b9cee5;
+    border-radius: 0;
     color: var(--texto);
     font: inherit;
 }
 
 #form-presenca input:focus,
-#form-presenca select:focus,
-.pix-chave:focus {
+#form-presenca select:focus {
     outline: 2px solid var(--dourado);
     outline-offset: 2px;
 }
@@ -284,71 +244,15 @@ footer a:hover {
     margin-top: 25px;
 }
 
-#retorno-formulario {
+#retorno-form {
     margin-top: 15px;
     text-align: center;
 }
 
-/* LISTA DE PRESENTES E PIX */
-.presentes-grid {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 25px;
-    max-width: 900px;
-    margin: 35px auto 0;
+.secundario {
+    margin-top: 25px;
 }
 
-.presente-card {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 15px;
-}
-
-.presente-card h3 {
-    margin-bottom: 0;
-}
-
-.presente-card p {
-    max-width: 350px;
-}
-
-.presente-card .botao {
-    margin-top: auto;
-}
-
-.pix-titular {
-    margin-top: 10px;
-}
-
-.pix-titular strong {
-    display: block;
-    color: var(--azul);
-}
-
-.presente-card label {
-    font-size: 0.85rem;
-}
-
-.pix-chave {
-    width: 100%;
-    max-width: 280px;
-    padding: 12px;
-    text-align: center;
-    background: var(--azul-claro);
-    border: 1px solid var(--dourado);
-    border-radius: 5px;
-    color: var(--texto);
-    font: inherit;
-}
-
-#mensagem-pix {
-    min-height: 24px;
-    color: var(--azul);
-    font-size: 0.9rem;
-}
-
-/* RODAPÉ */
 footer {
     text-align: center;
     padding: 35px 20px;
@@ -357,13 +261,12 @@ footer {
 
 .assinatura {
     font-family: "Great Vibes", cursive;
-    color: var(--azul);
+    color: var(--dourado);
     font-size: 2.5rem;
     margin: 8px 0;
 }
 
-/* CELULAR */
-@media (max-width: 650px) {
+@media (max-width: 600px) {
     .menu {
         gap: 12px;
         top: 15px;
@@ -374,7 +277,7 @@ footer {
     }
 
     .capa-conteudo {
-        padding-top: 85px;
+        padding-top: 70px;
     }
 
     .subtitulo,
@@ -387,8 +290,7 @@ footer {
         padding: 60px 18px;
     }
 
-    .detalhes-grid,
-    .presentes-grid {
+    .detalhes-grid {
         grid-template-columns: 1fr;
     }
 
@@ -404,8 +306,32 @@ footer {
     .relogio span {
         font-size: 1.7rem;
     }
-
-    .presente-card {
-        padding: 25px 20px;
-    }
 }
+/* Tema do casamento: azul, branco e dourado */
+.menu a:hover, footer a:hover { color: #a27b35; }
+.detalhe-card { box-shadow: 0 8px 26px rgba(27, 66, 111, 0.07); border-top: 3px solid var(--dourado); }
+.relogio div { background: #fff; border-top: 3px solid var(--dourado); }
+.botao { border-color: #234d7d; border-radius: 4px; }
+.detalhe-card a { color: #234d7d; font-weight: 600; }
+.secao h2, .capa h1 { color: #a47d3d; }
+.capa .subtitulo, .destaque { color: #315b88; }
+footer { border-top: 2px solid #d8bf8d; }
+
+
+/* Lista de presentes e PIX — azul, branco e dourado */
+.presentes-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 25px; margin: 35px auto 0; max-width: 900px; }
+.presente-card { display: flex; flex-direction: column; align-items: center; gap: 10px; }
+.presente-card h3 { margin-bottom: 0; }
+.presente-card .botao { margin-top: auto; color: #fff; }
+.pix-titular { margin-top: 12px; }
+.pix-label { font-size: .85rem; font-weight: 600; }
+.pix-chave { width: 100%; max-width: 270px; text-align: center; padding: 12px; border: 1px solid #bd9851; border-radius: 4px; color: #243b59; background: #fff; font: inherit; }
+.mensagem-pix { min-height: 1.5em; font-size: .85rem; color: #234d7d; }
+@media (max-width: 650px) { .presentes-grid { grid-template-columns: 1fr; } }
+
+/* NOMES DOS ACOMPANHANTES */
+.campos-acompanhantes[hidden] { display: none; }
+.campos-acompanhantes { margin-top: 22px; padding: 20px; border: 1px solid #c6d7e8; border-radius: 8px; background: #f4f8fd; }
+.campos-acompanhantes h3 { color: #234d7d; font-size: 1.1rem; }
+.campos-acompanhantes p { font-size: 0.85rem; margin: 4px 0 12px; }
+#lista-acompanhantes label { margin-top: 12px; }
